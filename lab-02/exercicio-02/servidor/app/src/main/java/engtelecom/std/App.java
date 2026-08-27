@@ -15,8 +15,11 @@ public class App {
         try (ServerSocket serverSocket = new ServerSocket(porta)) {
 
             System.out.println("Aguardando por conexões...");
-            var clientSocket = serverSocket.accept();
-            Thread.ofVirtual().start(new AtenderCliente(clientSocket));
+
+            while(!serverSocket.isClosed()) {
+                var clientSocket = serverSocket.accept();
+                Thread.ofVirtual().start(new AtenderCliente(clientSocket));
+            }
 
         }catch(Exception e){
             System.err.println("Erro: " + e);
