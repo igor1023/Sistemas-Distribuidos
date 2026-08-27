@@ -1,0 +1,10 @@
+services:
+  redis:
+    image : redis:alpine
+  
+  webapp: # rodará o app.py
+    build: .
+    ports:
+      - 5000:5000 # mapeamento de portas
+    volumes:
+      - ./app:/app # mapeamento de volume

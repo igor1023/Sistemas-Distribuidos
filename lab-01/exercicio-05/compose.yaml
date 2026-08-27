@@ -1,0 +1,19 @@
+services:
+  redis:
+    image : redis:alpine
+  
+  webapp: # rodará o app.py
+    build: .
+    ports:
+      - 5000 # mapeamento de portas
+    volumes:
+      - ./app:/app # mapeamento de volume
+    deploy:
+      replicas: 3
+
+  caddy:
+    image: caddy:alpine
+    ports:
+      - 4000:4000
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
