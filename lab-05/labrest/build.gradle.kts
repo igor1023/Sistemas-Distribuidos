@@ -2,6 +2,7 @@ plugins {
 	java
 	id("org.springframework.boot") version "4.1.1"
 	id("io.spring.dependency-management") version "1.1.7"
+	id("io.freefair.lombok") version "9.8.2"
 }
 
 group = "engtelecom.std"
@@ -18,6 +19,10 @@ repositories {
 }
 
 dependencies {
+	
+	// https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:3.1.1")
+
 	implementation("org.springframework.boot:spring-boot-starter-hateoas")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 	implementation("org.springframework.boot:spring-boot-starter-webmvc")
